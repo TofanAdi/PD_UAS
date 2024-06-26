@@ -1,0 +1,4268 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CLASSIFICATION FOR PREDICTION ON ALGERIAN FOREST FIRES &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'penambangan_data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CLASSIFICATION FOR PREDICTION  ON ALGERIAN FOREST FIRES</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpenambangan_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/penambangan_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CLASSIFICATION FOR PREDICTION  ON ALGERIAN FOREST FIRES</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">CLASSIFICATION FOR PREDICTION  ON ALGERIAN FOREST FIRES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">DATA UNDERSTANDING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengumpulkan-data">MENGUMPULKAN DATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-data">Mencari Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data">Menarik Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-data">Memahami Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur">Penjelasan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">KUALITAS DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value">Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">DATA PREPROCESSING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-outlier-factor">Local Outlier Factor</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modelling">DATA MODELLING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">Gaussian Naive bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#esemble-learning">ESEMBLE LEARNING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-classifier">Stacking Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-knn-dengan-n-7">Membuat model knn dengan n = 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-knn-dengan-n-12">Membuat model knn dengan n = 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merubah-data-menjadi-numerik">Merubah data menjadi numerik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-gaussian-naives-bayes-sebagai-meta-classifier">MODELLING GAUSSIAN NAIVES BAYES SEBAGAI META CLASSIFIER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi">PREDIKSI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sample-data">Membuat sample data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-naive-bayes">Modelling dengan Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-categorical-to-numeric">Change categorical to numeric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-aggregation">Make aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-prediction-function">Make prediction function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="classification-for-prediction-on-algerian-forest-fires">
+<h1>CLASSIFICATION FOR PREDICTION  ON ALGERIAN FOREST FIRES<a class="headerlink" href="#classification-for-prediction-on-algerian-forest-fires" title="Link to this heading">#</a></h1>
+<p>Kebakaran hutan adalah masalah lingkungan yang serius dan sering kali sulit untuk diprediksi dan ditangani secara efektif. Untuk memahami dan memprediksi kebakaran hutan, data historis mengenai kondisi meteorologi dan lingkungan sangat penting. Dataset “Algerian Forest Fires” dari UCI Machine Learning Repository menyediakan informasi tersebut untuk dua wilayah di Aljazair, yaitu Bejaia dan Sidi Bel-abbes.</p>
+<section id="tujuan-analisis">
+<h2>Tujuan Analisis<a class="headerlink" href="#tujuan-analisis" title="Link to this heading">#</a></h2>
+<p>Data ini mencakup berbagai informasi meteorologi dan kondisi lingkungan yang dapat mempengaruhi terjadinya kebakaran hutan. Dengan menggunakan dataset ini, peneliti dapat melakukan analisis faktor-faktor yang mempengaruhi kebakaran, mengembangkan model prediktif untuk deteksi dini kebakaran, serta mempelajari dampak perubahan iklim terhadap kebakaran hutan. Dataset ini juga berguna untuk evaluasi dan validasi algoritma machine learning dalam prediksi kebakaran hutan, sehingga dapat membantu dalam mengembangkan strategi yang lebih efektif untuk pencegahan dan penanganan kebakaran hutan di wilayah Aljazair.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">StackingClassifier</span> <span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1>DATA UNDERSTANDING<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<p>Data Understanding atau memahami data adalah sebuah tahapan di dalam metodologi sains data dan pengembangan AI yang bertujuan untuk mendapatkan pemahaman awal mengenai data yang dibutuhkan untuk memecahkan permasalahan yang diberikan. Pada case kali ini kita akan memahami Dataset Algerian Forest Fire</p>
+<section id="mengumpulkan-data">
+<h2>MENGUMPULKAN DATA<a class="headerlink" href="#mengumpulkan-data" title="Link to this heading">#</a></h2>
+<section id="mencari-data">
+<h3>Mencari Data<a class="headerlink" href="#mencari-data" title="Link to this heading">#</a></h3>
+<p>Tahapan pertama pada mengumpulkan data adalah dengan mencari dataset yang akan kita gunakan, sesuai penjelasan di atas kita akan menggunakan Dataset Algerian Forest Fires yang bersumber dari:</p>
+<p><a class="reference external" href="https://archive.ics.uci.edu/dataset/547/algerian+forest+fires+dataset">https://archive.ics.uci.edu/dataset/547/algerian+forest+fires+dataset</a></p>
+</section>
+<section id="menarik-data">
+<h3>Menarik Data<a class="headerlink" href="#menarik-data" title="Link to this heading">#</a></h3>
+<p>Setelah kita mendapatkan data yang sesuai, selanjutnya kita upload data tersebut ke drive atau database yang kita miliki. Kemudian kami integrasikan dataset tersebut ke notebooks yang kami gunakan dengan tujuan akan memudahkan akses sesama anggota kelompok.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;datasets_forest.xlsx&#39;</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/compat/_optional.py:135,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="nn">File /usr/local/python/3.10.13/lib/python3.10/importlib/__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1050,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1027,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1004,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;datasets_forest.xlsx&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/io/excel/_base.py:495,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>     <span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/io/excel/_base.py:1567,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1567</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1569</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1570</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1571</span> <span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/io/excel/_openpyxl.py:552,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">storage_options</span><span class="o">=</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="bp">self</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="n">engine_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="sd">     Reader using openpyxl engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span><span class="sd">         Arbitrary keyword arguments passed to excel engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">552</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span>         <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/compat/_optional.py:138,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data diatas adalah data yang akan kita gunakan pada analisis kali ini.</p>
+</section>
+</section>
+<section id="memahami-data">
+<h2>Memahami Data<a class="headerlink" href="#memahami-data" title="Link to this heading">#</a></h2>
+<p>Dataset “Algerian Forest Fires” dari UCI Machine Learning Repository berisi informasi mengenai kebakaran hutan di dua wilayah berbeda di Aljazair, yaitu Bejaia dan Sidi Bel-abbes. Dataset ini terdiri dari data harian mengenai kebakaran hutan di wilayah Bejaia (Bagian A) dan Sidi Bel-abbes (Bagian B) di Aljazair selama periode Juni 2012 hingga September 2012. Data ini mencakup berbagai informasi meteorologi dan kondisi lingkungan yang dapat mempengaruhi terjadinya kebakaran hutan. Dengan menggunakan dataset ini, peneliti dapat melakukan analisis faktor-faktor yang mempengaruhi kebakaran, mengembangkan model prediktif untuk deteksi dini kebakaran, serta mempelajari dampak perubahan iklim terhadap kebakaran hutan.</p>
+<p>pada dataset ini tedapat sejumlah 245 data</p>
+<section id="deskripsi-data">
+<h3>Deskripsi Data<a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Classes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes
+fire           138
+not fire       106
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="penjelasan-fitur">
+<h3>Penjelasan Fitur<a class="headerlink" href="#penjelasan-fitur" title="Link to this heading">#</a></h3>
+<p>Dataset ini berisi beberapa fitur yang digunakan untuk analisis dan prediksi kebakaran hutan, dengan tipe data masing-masing fitur dijelaskan sebagai berikut:</p>
+<p>Date: Tanggal pencatatan data. (datetime)</p>
+<p>Temperature: Suhu udara harian dalam derajat Celsius. (numeric - real)</p>
+<p>Relative Humidity: Kelembaban relatif dalam persen. (numeric - real)</p>
+<p>Wind Speed: Kecepatan angin dalam km/jam. (numeric - real)</p>
+<p>Rainfall: Curah hujan harian dalam mm. (numeric - real)</p>
+<p>FFMC (Fine Fuel Moisture Code): Indeks kelembaban bahan bakar halus. (numeric - real)</p>
+<p>DMC (Duff Moisture Code): Indeks kelembaban lapisan organik. (numeric - real)</p>
+<p>DC (Drought Code): Indeks kekeringan. (numeric - real)</p>
+<p>ISI (Initial Spread Index): Indeks awal penyebaran api. (numeric - real)</p>
+<p>BUI (Buildup Index): Indeks pengumpulan bahan bakar. (numeric - real)</p>
+<p>FWI (Fire Weather Index): Indeks cuaca kebakaran, menggabungkan beberapa parameter untuk memberikan perkiraan tingkat bahaya kebakaran. (numeric - real)</p>
+<p>Classes: Kategori kebakaran (0: tidak ada kebakaran, 1: ada kebakaran). (categorical - integer)</p>
+<p>Dengan menambahkan tipe data untuk setiap fitur, analisis dapat dilakukan dengan lebih tepat, serta pemilihan model prediksi dan metode evaluasi dapat disesuaikan dengan jenis data yang digunakan</p>
+</section>
+<section id="eksplorasi-data">
+<h3>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 244 entries, 0 to 243
+Data columns (total 16 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   id           244 non-null    int64  
+ 1   Region       244 non-null    object 
+ 2   day          244 non-null    int64  
+ 3   month        244 non-null    int64  
+ 4   year         244 non-null    int64  
+ 5   Temperature  244 non-null    int64  
+ 6   RH           244 non-null    int64  
+ 7   Ws           244 non-null    int64  
+ 8   Rain         244 non-null    int64  
+ 9   FFMC         244 non-null    int64  
+ 10  DMC          244 non-null    int64  
+ 11  DC           244 non-null    float64
+ 12  ISI          244 non-null    int64  
+ 13  BUI          244 non-null    int64  
+ 14  FWI          244 non-null    float64
+ 15  Classes      244 non-null    object 
+dtypes: float64(2), int64(12), object(2)
+memory usage: 30.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>day</th>
+      <th>month</th>
+      <th>year</th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.0</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+      <td>244.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>122.500000</td>
+      <td>15.754098</td>
+      <td>7.500000</td>
+      <td>2012.0</td>
+      <td>32.172131</td>
+      <td>61.938525</td>
+      <td>15.504098</td>
+      <td>6.942623</td>
+      <td>700.348361</td>
+      <td>134.081967</td>
+      <td>49.288115</td>
+      <td>42.356557</td>
+      <td>151.930328</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>70.580923</td>
+      <td>8.825059</td>
+      <td>1.112961</td>
+      <td>0.0</td>
+      <td>3.633843</td>
+      <td>14.884200</td>
+      <td>2.810178</td>
+      <td>19.559469</td>
+      <td>258.073485</td>
+      <td>126.267701</td>
+      <td>47.619662</td>
+      <td>40.904686</td>
+      <td>136.771442</td>
+      <td>7.429515</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>6.000000</td>
+      <td>2012.0</td>
+      <td>22.000000</td>
+      <td>21.000000</td>
+      <td>6.000000</td>
+      <td>0.000000</td>
+      <td>45.000000</td>
+      <td>3.000000</td>
+      <td>6.900000</td>
+      <td>0.000000</td>
+      <td>3.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>61.750000</td>
+      <td>8.000000</td>
+      <td>7.000000</td>
+      <td>2012.0</td>
+      <td>30.000000</td>
+      <td>52.000000</td>
+      <td>14.000000</td>
+      <td>0.000000</td>
+      <td>628.750000</td>
+      <td>37.750000</td>
+      <td>13.275000</td>
+      <td>11.000000</td>
+      <td>50.250000</td>
+      <td>0.700000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>122.500000</td>
+      <td>16.000000</td>
+      <td>7.500000</td>
+      <td>2012.0</td>
+      <td>32.000000</td>
+      <td>63.000000</td>
+      <td>15.000000</td>
+      <td>0.000000</td>
+      <td>808.000000</td>
+      <td>97.500000</td>
+      <td>33.100000</td>
+      <td>27.000000</td>
+      <td>112.000000</td>
+      <td>4.200000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>183.250000</td>
+      <td>23.000000</td>
+      <td>8.000000</td>
+      <td>2012.0</td>
+      <td>35.000000</td>
+      <td>73.250000</td>
+      <td>17.000000</td>
+      <td>4.000000</td>
+      <td>878.750000</td>
+      <td>188.750000</td>
+      <td>68.150000</td>
+      <td>68.000000</td>
+      <td>217.500000</td>
+      <td>11.375000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>244.000000</td>
+      <td>31.000000</td>
+      <td>9.000000</td>
+      <td>2012.0</td>
+      <td>42.000000</td>
+      <td>90.000000</td>
+      <td>29.000000</td>
+      <td>168.000000</td>
+      <td>943.000000</td>
+      <td>659.000000</td>
+      <td>220.400000</td>
+      <td>185.000000</td>
+      <td>674.000000</td>
+      <td>31.100000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Berikut adalah beberapa informasi yang dihasilkan oleh describe():</p>
+<ul class="simple">
+<li><p>Count (Jumlah): Jumlah entri non-null dalam setiap kolom.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Mean (Rata-rata): Rata-rata dari setiap kolom.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Std (Standar Deviasi): Standar deviasi dari setiap kolom, mengukur seberapa tersebar data di sekitar rata-rata.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Min (Minimum): Nilai minimum dalam setiap kolom.</p></li>
+</ul>
+<ul class="simple">
+<li><p>25% (Kuartil Pertama): Nilai kuartil pertama (25th percentile) dari setiap kolom, menandakan nilai di bawahnya 25% dari data.</p></li>
+</ul>
+<ul class="simple">
+<li><p>50% (Median): Nilai median (50th percentile) dari setiap kolom, membagi data menjadi dua bagian yang sama.</p></li>
+</ul>
+<ul class="simple">
+<li><p>75% (Kuartil Ketiga): Nilai kuartil ketiga (75th percentile) dari setiap kolom, menandakan nilai di bawahnya 75% dari data.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Max (Maksimum): Nilai maksimum dalam setiap kolom Jumlah data setiap class/specie</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kualitas-data">
+<h1>KUALITAS DATA<a class="headerlink" href="#kualitas-data" title="Link to this heading">#</a></h1>
+<section id="missing-value">
+<h2>Missing Value<a class="headerlink" href="#missing-value" title="Link to this heading">#</a></h2>
+<p>Missing value adalah informasi yang tidak tersedia untuk sebuah objek (kasus). Missing value terjadi karena informasi untuk sesuatu tentang objek tidak diberikan, sulit dicari, atau memang informasi tersebut tidak ada</p>
+<p>Kita akan mengecek untuk kualitas data, apakah data tersebut memiliki missing value atau tidak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id             0
+Region         0
+day            0
+month          0
+year           0
+Temperature    0
+RH             0
+Ws             0
+Rain           0
+FFMC           0
+DMC            0
+DC             0
+ISI            0
+BUI            0
+FWI            0
+Classes        0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>pada dataset diatas diketahui bahwa tidak terdapat adanya missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Classes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes
+fire           138
+not fire       106
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing">
+<h1>DATA PREPROCESSING<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h1>
+<p>Dalam hal ini kita tidak akan menggunakan kolom region, day, month, dan year untuk preprocessing data. Hal ini disebebkan karena :</p>
+<p>Kolom Region:</p>
+<ul class="simple">
+<li><p>Kolom region berisi data kategori yang merepresentasikan lokasi geografis. Data kategori seperti ini tidak secara langsung relevan dengan deteksi outlier yang berdasarkan pada fitur numerik dan kontinual seperti suhu, kelembaban, dan kecepatan angin.</p></li>
+</ul>
+<p>Kolom Day, Month, Year:</p>
+<ul class="simple">
+<li><p>Kolom day, month, dan year berisi informasi waktu yang biasanya lebih relevan untuk analisis tren temporal atau musiman. Dalam konteks deteksi outlier dan prediksi model berbasis fitur numerik lingkungan, informasi ini kurang memberikan kontribusi yang berarti. Fokus utama adalah pada atribut yang menggambarkan kondisi fisik dan lingkungan yang memiliki pengaruh langsung terhadap deteksi outlier dan prediksi kebakaran hutan.
+Dengan demikian, kita akan memfokuskan preprocessing pada fitur numerik yang lebih relevan seperti suhu (Temperature), kelembaban (RH), kecepatan angin (Ws), curah hujan (Rain), dan indeks bahan bakar hutan (FFMC, DMC, DC, ISI, BUI, FWI). Dengan cara ini, model yang dibangun akan lebih akurat dan efisien dalam mendeteksi outlier dan melakukan prediksi.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>57</td>
+      <td>18</td>
+      <td>0</td>
+      <td>657</td>
+      <td>34</td>
+      <td>7.6</td>
+      <td>13</td>
+      <td>34</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>29</td>
+      <td>61</td>
+      <td>13</td>
+      <td>13</td>
+      <td>644</td>
+      <td>41</td>
+      <td>7.6</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0.4</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26</td>
+      <td>82</td>
+      <td>22</td>
+      <td>131</td>
+      <td>471</td>
+      <td>25</td>
+      <td>7.1</td>
+      <td>3</td>
+      <td>27</td>
+      <td>0.1</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25</td>
+      <td>89</td>
+      <td>13</td>
+      <td>25</td>
+      <td>286</td>
+      <td>13</td>
+      <td>6.9</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0.0</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>77</td>
+      <td>16</td>
+      <td>0</td>
+      <td>648</td>
+      <td>3</td>
+      <td>14.2</td>
+      <td>12</td>
+      <td>39</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>30</td>
+      <td>65</td>
+      <td>14</td>
+      <td>0</td>
+      <td>854</td>
+      <td>16</td>
+      <td>44.5</td>
+      <td>45</td>
+      <td>169</td>
+      <td>6.5</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>28</td>
+      <td>87</td>
+      <td>15</td>
+      <td>44</td>
+      <td>411</td>
+      <td>65</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>62</td>
+      <td>0.0</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>27</td>
+      <td>87</td>
+      <td>29</td>
+      <td>5</td>
+      <td>459</td>
+      <td>35</td>
+      <td>7.9</td>
+      <td>4</td>
+      <td>34</td>
+      <td>0.2</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>24</td>
+      <td>54</td>
+      <td>18</td>
+      <td>1</td>
+      <td>797</td>
+      <td>43</td>
+      <td>15.2</td>
+      <td>17</td>
+      <td>51</td>
+      <td>0.7</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>24</td>
+      <td>64</td>
+      <td>15</td>
+      <td>2</td>
+      <td>673</td>
+      <td>38</td>
+      <td>16.5</td>
+      <td>12</td>
+      <td>48</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>244 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># Misalkan forest adalah DataFrame Anda</span>
+<span class="n">forest</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Mengambil kolom yang diinginkan</span>
+<span class="n">columns_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span> <span class="s1">&#39;Ws&#39;</span><span class="p">,</span> <span class="s1">&#39;Rain&#39;</span><span class="p">,</span> <span class="s1">&#39;FFMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;ISI&#39;</span><span class="p">,</span> <span class="s1">&#39;BUI&#39;</span><span class="p">,</span> <span class="s1">&#39;FWI&#39;</span><span class="p">]</span>
+<span class="n">forest_filtered</span> <span class="o">=</span> <span class="n">forest</span><span class="p">[</span><span class="n">columns_to_keep</span><span class="p">]</span>
+
+<span class="c1"># Menampilkan data dalam bentuk tabel</span>
+<span class="n">display</span><span class="p">(</span><span class="n">forest_filtered</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># Menampilkan lima baris pertama sebagai contoh</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>57</td>
+      <td>18</td>
+      <td>0</td>
+      <td>657</td>
+      <td>34</td>
+      <td>7.6</td>
+      <td>13</td>
+      <td>34</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>29</td>
+      <td>61</td>
+      <td>13</td>
+      <td>13</td>
+      <td>644</td>
+      <td>41</td>
+      <td>7.6</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26</td>
+      <td>82</td>
+      <td>22</td>
+      <td>131</td>
+      <td>471</td>
+      <td>25</td>
+      <td>7.1</td>
+      <td>3</td>
+      <td>27</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25</td>
+      <td>89</td>
+      <td>13</td>
+      <td>25</td>
+      <td>286</td>
+      <td>13</td>
+      <td>6.9</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>77</td>
+      <td>16</td>
+      <td>0</td>
+      <td>648</td>
+      <td>3</td>
+      <td>14.2</td>
+      <td>12</td>
+      <td>39</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>31</td>
+      <td>67</td>
+      <td>14</td>
+      <td>0</td>
+      <td>826</td>
+      <td>58</td>
+      <td>22.2</td>
+      <td>31</td>
+      <td>7</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>33</td>
+      <td>54</td>
+      <td>13</td>
+      <td>0</td>
+      <td>882</td>
+      <td>99</td>
+      <td>30.5</td>
+      <td>64</td>
+      <td>109</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>30</td>
+      <td>73</td>
+      <td>15</td>
+      <td>0</td>
+      <td>866</td>
+      <td>121</td>
+      <td>38.3</td>
+      <td>56</td>
+      <td>135</td>
+      <td>7.1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>25</td>
+      <td>88</td>
+      <td>13</td>
+      <td>2</td>
+      <td>529</td>
+      <td>79</td>
+      <td>38.8</td>
+      <td>4</td>
+      <td>105</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>28</td>
+      <td>79</td>
+      <td>12</td>
+      <td>0</td>
+      <td>732</td>
+      <td>95</td>
+      <td>46.3</td>
+      <td>13</td>
+      <td>126</td>
+      <td>0.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="local-outlier-factor">
+<h2>Local Outlier Factor<a class="headerlink" href="#local-outlier-factor" title="Link to this heading">#</a></h2>
+<p>Outlier adalah titik data yang secara signifikan berbeda atau jauh dari titik data lainnya dalam sebuah kumpulan data. Mereka bisa menunjukkan anomali, kesalahan pengukuran, atau kejadian yang jarang terjadi. Local Outlier Factor (LOF) adalah salah satu algoritma yang digunakan untuk mengidentifikasi outlier dalam dataset.</p>
+<p>LOF bekerja dengan memperhitungkan kepadatan lingkungan dari setiap titik data. Konsep utamanya adalah bahwa titik yang dianggap sebagai outlier akan memiliki kepadatan lingkungan yang lebih rendah daripada tetangga-tetangganya. Dalam konteks LOF, ketika suatu titik dianggap sebagai outlier berdasarkan kepadatan lingkungan lokalnya, maka titik tersebut disebut sebagai local outlier.</p>
+<p>Algoritma LOF mengevaluasi kepadatan setiap titik data relatif terhadap kepadatan titik-titik tetangga di sekitarnya. Dengan cara ini, LOF dapat mengidentifikasi outlier yang mungkin tersembunyi dalam berbagai tingkat kepadatan di seluruh kumpulan data. Ini membuat LOF efektif ketika kepadatan data tidak merata di seluruh dataset, karena mampu menyesuaikan dengan lingkungan lokal setiap titik data. untuk langkah langkahnya sebagai berikut :</p>
+<ol class="arabic simple">
+<li><p>Menghitung jarak dan menentukan tetangga</p></li>
+</ol>
+<img src="_image/image-20240627-022004.png" width="" align="" /><ol class="arabic simple" start="2">
+<li><p>Menghitung Reachability Distance (RD)</p></li>
+</ol>
+<img src="_image/image-20240627-022023.png" width="" align="" /><p>3 Menghitung Local Reachability Distance (LRD)</p>
+<img src="_image/image-20240627-022038.png" width="" align="" /><ol class="arabic simple" start="4">
+<li><p>Menghitung Local Outlier Factor (LOF)</p></li>
+</ol>
+<img src="_image/image-20240627-022056.png" width="" align="" /><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">lof_predict</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">outlier</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">lof_predict</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index predicted table:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">lof_predict</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index predicted table: Index([  8,  52,  55,  58,  73,  87,  90,  91,  93, 132, 135, 158, 172, 173,
+       184, 194, 203, 208, 209, 210, 215, 236, 237],
+      dtype=&#39;int64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">outlier</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>25</td>
+      <td>88</td>
+      <td>13</td>
+      <td>2</td>
+      <td>529</td>
+      <td>79</td>
+      <td>38.8</td>
+      <td>4</td>
+      <td>105</td>
+      <td>0.3</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>27</td>
+      <td>66</td>
+      <td>22</td>
+      <td>4</td>
+      <td>682</td>
+      <td>105</td>
+      <td>71.3</td>
+      <td>18</td>
+      <td>154</td>
+      <td>2.1</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>36</td>
+      <td>53</td>
+      <td>19</td>
+      <td>0</td>
+      <td>892</td>
+      <td>171</td>
+      <td>98.6</td>
+      <td>10</td>
+      <td>239</td>
+      <td>15.3</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>32</td>
+      <td>73</td>
+      <td>15</td>
+      <td>0</td>
+      <td>866</td>
+      <td>267</td>
+      <td>127.0</td>
+      <td>56</td>
+      <td>35</td>
+      <td>11.9</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>35</td>
+      <td>63</td>
+      <td>15</td>
+      <td>0</td>
+      <td>87</td>
+      <td>19</td>
+      <td>85.1</td>
+      <td>59</td>
+      <td>244</td>
+      <td>10.2</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>33</td>
+      <td>82</td>
+      <td>21</td>
+      <td>0</td>
+      <td>849</td>
+      <td>47</td>
+      <td>200.2</td>
+      <td>44</td>
+      <td>593</td>
+      <td>13.2</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>35</td>
+      <td>70</td>
+      <td>17</td>
+      <td>8</td>
+      <td>727</td>
+      <td>252</td>
+      <td>180.4</td>
+      <td>17</td>
+      <td>374</td>
+      <td>4.2</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>28</td>
+      <td>80</td>
+      <td>21</td>
+      <td>168</td>
+      <td>525</td>
+      <td>87</td>
+      <td>8.7</td>
+      <td>6</td>
+      <td>83</td>
+      <td>0.3</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>22</td>
+      <td>86</td>
+      <td>15</td>
+      <td>101</td>
+      <td>305</td>
+      <td>7</td>
+      <td>7.0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0.0</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>31</td>
+      <td>42</td>
+      <td>21</td>
+      <td>0</td>
+      <td>906</td>
+      <td>182</td>
+      <td>30.5</td>
+      <td>134</td>
+      <td>18</td>
+      <td>16.7</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>27</td>
+      <td>79</td>
+      <td>16</td>
+      <td>7</td>
+      <td>534</td>
+      <td>64</td>
+      <td>7.3</td>
+      <td>5</td>
+      <td>61</td>
+      <td>0.3</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>38</td>
+      <td>43</td>
+      <td>13</td>
+      <td>5</td>
+      <td>85</td>
+      <td>13</td>
+      <td>35.4</td>
+      <td>41</td>
+      <td>137</td>
+      <td>5.2</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>36</td>
+      <td>29</td>
+      <td>18</td>
+      <td>0</td>
+      <td>939</td>
+      <td>396</td>
+      <td>80.6</td>
+      <td>185</td>
+      <td>395</td>
+      <td>30.0</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>32</td>
+      <td>48</td>
+      <td>18</td>
+      <td>0</td>
+      <td>915</td>
+      <td>442</td>
+      <td>90.1</td>
+      <td>132</td>
+      <td>44</td>
+      <td>25.4</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>40</td>
+      <td>34</td>
+      <td>14</td>
+      <td>0</td>
+      <td>933</td>
+      <td>108</td>
+      <td>21.4</td>
+      <td>138</td>
+      <td>106</td>
+      <td>13.5</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>39</td>
+      <td>21</td>
+      <td>17</td>
+      <td>4</td>
+      <td>93</td>
+      <td>184</td>
+      <td>41.5</td>
+      <td>155</td>
+      <td>184</td>
+      <td>18.8</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>36</td>
+      <td>71</td>
+      <td>15</td>
+      <td>0</td>
+      <td>86</td>
+      <td>369</td>
+      <td>117.1</td>
+      <td>51</td>
+      <td>413</td>
+      <td>12.2</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>33</td>
+      <td>37</td>
+      <td>16</td>
+      <td>0</td>
+      <td>922</td>
+      <td>613</td>
+      <td>167.2</td>
+      <td>131</td>
+      <td>64</td>
+      <td>30.3</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>36</td>
+      <td>54</td>
+      <td>14</td>
+      <td>0</td>
+      <td>91</td>
+      <td>659</td>
+      <td>177.3</td>
+      <td>10</td>
+      <td>68</td>
+      <td>26.1</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>35</td>
+      <td>56</td>
+      <td>14</td>
+      <td>4</td>
+      <td>792</td>
+      <td>37</td>
+      <td>166.0</td>
+      <td>21</td>
+      <td>306</td>
+      <td>6.1</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>28</td>
+      <td>67</td>
+      <td>19</td>
+      <td>0</td>
+      <td>754</td>
+      <td>29</td>
+      <td>16.3</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0.8</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>35</td>
+      <td>56</td>
+      <td>14</td>
+      <td>0</td>
+      <td>89</td>
+      <td>294</td>
+      <td>115.6</td>
+      <td>75</td>
+      <td>36</td>
+      <td>15.2</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>26</td>
+      <td>49</td>
+      <td>6</td>
+      <td>2</td>
+      <td>613</td>
+      <td>119</td>
+      <td>28.1</td>
+      <td>6</td>
+      <td>119</td>
+      <td>0.4</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">column_mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;int64&#39;</span><span class="p">:</span>
+        <span class="n">column_mean</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">column_mean</span><span class="p">)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">outlier</span><span class="p">,</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_mean</span>
+
+<span class="c1"># df_replaced = df.copy()</span>
+<span class="c1"># for index in outlier:</span>
+<span class="c1">#     for column in df_replaced.drop([&#39;Classification&#39;], axis=1).columns:</span>
+<span class="c1">#         median_value = df_replaced[column].median()</span>
+<span class="c1">#         if df_replaced[column].dtype == &#39;int64&#39;:</span>
+<span class="c1">#             median_value = int(median_value)</span>
+<span class="c1">#         df_replaced.loc[index, column] = median_value</span>
+<span class="c1"># df=df_replaced        </span>
+
+<span class="c1"># print(&quot;Data after replacing outliers with median:&quot;)</span>
+<span class="c1"># print(df)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>57</td>
+      <td>18</td>
+      <td>0</td>
+      <td>657</td>
+      <td>34</td>
+      <td>7.6</td>
+      <td>13</td>
+      <td>34</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>29</td>
+      <td>61</td>
+      <td>13</td>
+      <td>13</td>
+      <td>644</td>
+      <td>41</td>
+      <td>7.6</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0.4</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26</td>
+      <td>82</td>
+      <td>22</td>
+      <td>131</td>
+      <td>471</td>
+      <td>25</td>
+      <td>7.1</td>
+      <td>3</td>
+      <td>27</td>
+      <td>0.1</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25</td>
+      <td>89</td>
+      <td>13</td>
+      <td>25</td>
+      <td>286</td>
+      <td>13</td>
+      <td>6.9</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0.0</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>27</td>
+      <td>77</td>
+      <td>16</td>
+      <td>0</td>
+      <td>648</td>
+      <td>3</td>
+      <td>14.2</td>
+      <td>12</td>
+      <td>39</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>30</td>
+      <td>65</td>
+      <td>14</td>
+      <td>0</td>
+      <td>854</td>
+      <td>16</td>
+      <td>44.5</td>
+      <td>45</td>
+      <td>169</td>
+      <td>6.5</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>28</td>
+      <td>87</td>
+      <td>15</td>
+      <td>44</td>
+      <td>411</td>
+      <td>65</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>62</td>
+      <td>0.0</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>27</td>
+      <td>87</td>
+      <td>29</td>
+      <td>5</td>
+      <td>459</td>
+      <td>35</td>
+      <td>7.9</td>
+      <td>4</td>
+      <td>34</td>
+      <td>0.2</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>24</td>
+      <td>54</td>
+      <td>18</td>
+      <td>1</td>
+      <td>797</td>
+      <td>43</td>
+      <td>15.2</td>
+      <td>17</td>
+      <td>51</td>
+      <td>0.7</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>24</td>
+      <td>64</td>
+      <td>15</td>
+      <td>2</td>
+      <td>673</td>
+      <td>38</td>
+      <td>16.5</td>
+      <td>12</td>
+      <td>48</td>
+      <td>0.5</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>244 rows × 11 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-modelling">
+<h1>DATA MODELLING<a class="headerlink" href="#data-modelling" title="Link to this heading">#</a></h1>
+<p>Modeling dalam machine learning adalah proses menciptakan dan melatih algoritma yang dapat mengenali pola dalam data dan membuat prediksi atau keputusan berdasarkan pola tersebut. Proses ini melibatkan penggunaan teknik statistik dan komputasi untuk mengembangkan model yang dapat secara akurat merepresentasikan hubungan dalam data dan memprediksi hasil baru yang belum pernah dilihat sebelumnya. karena didalam kasus Datasets Fertility ini tujuannya adalah untuk melakukan diagnosis fertilitas jadi tentunya kita menggunakan Metode Klasifikasi.</p>
+<p>Metode klasifikasi adalah teknik analisis data yang digunakan untuk memisahkan atau mengelompokkan data ke dalam kategori atau kelas berdasarkan atribut-atribut yang ada. Tujuan utama dari metode ini adalah membangun model yang dapat memprediksi kelas atau label data yang belum pernah dilihat sebelumnya berdasarkan fitur-fitur yang diamati. Dalam hal ini, kita menggunakan metode klasifikasi Naive Bayes karena sangat cocok untuk klasifikasi teks dan memiliki kinerja yang baik pada dataset dengan dimensi tinggi. Mari kita langsung implementasikan metode ini.</p>
+<p>Pada klasifikasi naive bayes gaussian kita memerlukan data train dan data test. Data train merupakan bagian dalam kumpulan dataset yang disediakan untuk menjadi bahan pembelajaran model agar model dapat menggeneralisasi (menemukan pola) data sehingga nantinya dapat digunakan untuk memprediksi data baru. Sedangkan data test adalah bagian dari kumpulan data set yang akan digunakan untuk mengetest dengan acuan prediksi dari data train yang digunakan. Untuk pembagian data nya sendiri adalah 30% menjadi data Test dan 70% menjadi data Train. Pada kode berikut random state dimulai dari 20.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>183</th>
+      <td>38</td>
+      <td>52</td>
+      <td>14</td>
+      <td>0</td>
+      <td>783</td>
+      <td>44</td>
+      <td>10.5</td>
+      <td>2</td>
+      <td>44</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>33</td>
+      <td>57</td>
+      <td>16</td>
+      <td>0</td>
+      <td>875</td>
+      <td>157</td>
+      <td>37.6</td>
+      <td>67</td>
+      <td>157</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>29</td>
+      <td>80</td>
+      <td>14</td>
+      <td>2</td>
+      <td>487</td>
+      <td>22</td>
+      <td>7.6</td>
+      <td>3</td>
+      <td>26</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>31</td>
+      <td>55</td>
+      <td>11</td>
+      <td>0</td>
+      <td>878</td>
+      <td>165</td>
+      <td>57.9</td>
+      <td>54</td>
+      <td>192</td>
+      <td>8.3</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>34</td>
+      <td>58</td>
+      <td>13</td>
+      <td>2</td>
+      <td>795</td>
+      <td>187</td>
+      <td>88.0</td>
+      <td>21</td>
+      <td>244</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>34</td>
+      <td>45</td>
+      <td>18</td>
+      <td>0</td>
+      <td>905</td>
+      <td>187</td>
+      <td>46.4</td>
+      <td>113</td>
+      <td>187</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>29</td>
+      <td>74</td>
+      <td>15</td>
+      <td>11</td>
+      <td>595</td>
+      <td>47</td>
+      <td>8.2</td>
+      <td>8</td>
+      <td>46</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>29</td>
+      <td>89</td>
+      <td>13</td>
+      <td>7</td>
+      <td>361</td>
+      <td>17</td>
+      <td>7.6</td>
+      <td>0</td>
+      <td>22</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>30</td>
+      <td>58</td>
+      <td>12</td>
+      <td>41</td>
+      <td>661</td>
+      <td>4</td>
+      <td>8.4</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>30</td>
+      <td>73</td>
+      <td>17</td>
+      <td>9</td>
+      <td>62</td>
+      <td>26</td>
+      <td>8.4</td>
+      <td>11</td>
+      <td>3</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>87</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>33</td>
+      <td>48</td>
+      <td>16</td>
+      <td>0</td>
+      <td>876</td>
+      <td>79</td>
+      <td>17.800000</td>
+      <td>68</td>
+      <td>78</td>
+      <td>6.400000</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>35</td>
+      <td>44</td>
+      <td>17</td>
+      <td>2</td>
+      <td>856</td>
+      <td>99</td>
+      <td>28.900000</td>
+      <td>54</td>
+      <td>107</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>34</td>
+      <td>69</td>
+      <td>13</td>
+      <td>0</td>
+      <td>85</td>
+      <td>82</td>
+      <td>19.800000</td>
+      <td>4</td>
+      <td>82</td>
+      <td>3.900000</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>25</td>
+      <td>76</td>
+      <td>17</td>
+      <td>72</td>
+      <td>46</td>
+      <td>13</td>
+      <td>7.500000</td>
+      <td>2</td>
+      <td>18</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>36</td>
+      <td>50</td>
+      <td>16</td>
+      <td>0</td>
+      <td>899</td>
+      <td>327</td>
+      <td>71.000000</td>
+      <td>95</td>
+      <td>326</td>
+      <td>17.300000</td>
+    </tr>
+  </tbody>
+</table>
+<p>74 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>183    not fire   
+179        fire   
+124    not fire   
+112        fire   
+233    not fire   
+          ...     
+156        fire   
+223    not fire   
+15     not fire   
+218    not fire   
+99     not fire   
+Name: Classes, Length: 170, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>87         fire   
+236        fire   
+209        fire   
+153        fire   
+128        fire   
+          ...     
+64         fire   
+73         fire   
+92     not fire   
+184        fire   
+171        fire   
+Name: Classes, Length: 74, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menggabungkan data x dan y</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="n">df_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>87</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>33</td>
+      <td>48</td>
+      <td>16</td>
+      <td>0</td>
+      <td>876</td>
+      <td>79</td>
+      <td>17.800000</td>
+      <td>68</td>
+      <td>78</td>
+      <td>6.400000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>35</td>
+      <td>44</td>
+      <td>17</td>
+      <td>2</td>
+      <td>856</td>
+      <td>99</td>
+      <td>28.900000</td>
+      <td>54</td>
+      <td>107</td>
+      <td>6.000000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>34</td>
+      <td>69</td>
+      <td>13</td>
+      <td>0</td>
+      <td>85</td>
+      <td>82</td>
+      <td>19.800000</td>
+      <td>4</td>
+      <td>82</td>
+      <td>3.900000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>25</td>
+      <td>76</td>
+      <td>17</td>
+      <td>72</td>
+      <td>46</td>
+      <td>13</td>
+      <td>7.500000</td>
+      <td>2</td>
+      <td>18</td>
+      <td>0.100000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>36</td>
+      <td>50</td>
+      <td>16</td>
+      <td>0</td>
+      <td>899</td>
+      <td>327</td>
+      <td>71.000000</td>
+      <td>95</td>
+      <td>326</td>
+      <td>17.300000</td>
+      <td>fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>74 rows × 11 columns</p>
+</div></div></div>
+</div>
+<section id="gaussian-naive-bayes">
+<h2>Gaussian Naive bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Gaussian Naive Bayes adalah teknik klasifikasi dalam machine learning yang menggunakan probabilitas dan Distribusi Gaussian atau Normal. Distribusi Gaussian menganggap bahwa setiap fitur pada data independen satu sama lain dalam memprediksi target. Prediksi dari seluruh parameter digabungkan untuk menghasilkan prediksi akhir dengan probabilitas target yang diklasifikasikan ke dalam dua kelas. Hasil klasifikasi akhir adalah kelas data berdasarkan probabilitas tertinggi dari grup target.</p>
+<p>berikut adalah code naive bayes Gaussian dari data raisin sebelum masuk ke codenya dibawah ini ada rumus naive bayes gaussian:</p>
+<p>Untuk pembagiannya data train dan data test akan dibagi menjadi 20% data test dan 80% data train</p>
+<p>berikut langkah-langkah perhitungannya:</p>
+<p>1.Ambil data pelatihan dari model yang telah dibuat.
+2.Hitung probabilitas untuk setiap data pelatihan.</p>
+<p>3.Hitung rata-rata dan standar deviasi untuk setiap fitur dalam setiap kelas pada data pelatihan.</p>
+<p>4.Setelah itu, tentukan input data yang terdiri dari Area, MajorAxisLength, MinorAxisLength, Eccentricity, ConvexArea, Extent, Perimeter</p>
+<p>5.Hitung distribusi Gaussian untuk setiap fitur dalam setiap kelas pada data pelatihan.</p>
+<img src="_image/image-20240627-022155.png" width="" align="" /><ol class="arabic simple" start="6">
+<li><p>Hitung probabilitas posterior untuk setiap Target.</p></li>
+</ol>
+<img src="_image/image-20240627-022208.png" width="" align="" /><p>7.tentukan maximum posteriori</p>
+<img src="_image/image-20240627-022308.png" width="" align="" /><ol class="arabic simple" start="8">
+<li><p>Pada Target yg mendapat posteriori maksimal itulah Target dari data inputan baru tersebut</p></li>
+</ol>
+<p>Berikut adalah code gaussian naive bayes dengan menggunakan sklearn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gnb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># Melatih model dengan menggunakan data latih</span>
+<span class="n">gnb_model</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluasi Model</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.8513513513513513
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">30.0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">85.5</span><span class="p">,</span> <span class="mf">27.2</span><span class="p">,</span> <span class="mf">129.2</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">70.1</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;fire   &#39;]
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:450: UserWarning: X does not have valid feature names, but GaussianNB was fitted with feature names
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="knn">
+<h2>KNN<a class="headerlink" href="#knn" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8243243243243243
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="esemble-learning">
+<h1>ESEMBLE LEARNING<a class="headerlink" href="#esemble-learning" title="Link to this heading">#</a></h1>
+<section id="stacking-classifier">
+<h2>Stacking Classifier<a class="headerlink" href="#stacking-classifier" title="Link to this heading">#</a></h2>
+<img src="_image/image-20240627-022333.png" width="" align="" /><p>Stacking classifier adalah metode ensemble learning yang menggabungkan beberapa model (disebut sebagai base models atau level-0 models) dengan menggunakan model lain (disebut sebagai meta-learner atau level-1 model) untuk membuat prediksi akhir. Prosesnya adalah sebagai berikut:</p>
+<ul class="simple">
+<li><p>Melatih beberapa base models pada data pelatihan.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Membuat prediksi dari setiap base model pada data validasi dan data pelatihan.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Menggunakan prediksi dari base models sebagai fitur baru untuk melatih meta-learner.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Meta-learner membuat prediksi akhir berdasarkan fitur-fitur baru ini.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Keunggulan stacking adalah kemampuan untuk menggabungkan kekuatan dari berbagai model yang berbeda untuk menghasilkan prediksi yang lebih akurat.</p></li>
+</ul>
+<section id="membuat-model-knn-dengan-n-7">
+<h3>Membuat model knn dengan n = 7<a class="headerlink" href="#membuat-model-knn-dengan-n-7" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_n_7</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">clf_n_7</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#joblib.dump(clf_n_7, &#39;stacking/knn_7.joblib&#39;)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">clf_n_7</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">result_n_7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P1&#39;</span><span class="p">])</span>
+
+<span class="n">result_n_7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 1 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="membuat-model-knn-dengan-n-12">
+<h3>Membuat model knn dengan n = 12<a class="headerlink" href="#membuat-model-knn-dengan-n-12" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_n_12</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">clf_n_12</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#joblib.dump(clf_n_12, &#39;stacking/knn_12.joblib&#39;)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">clf_n_12</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">result_n_12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P2&#39;</span><span class="p">])</span>
+
+<span class="n">result_n_12</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>menggabungkan 2 knn</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">result_n_7</span><span class="p">,</span> <span class="n">result_n_12</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x_combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P1</th>
+      <th>P2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fire</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fire</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fire</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>fire</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>not fire</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="merubah-data-menjadi-numerik">
+<h3>Merubah data menjadi numerik<a class="headerlink" href="#merubah-data-menjadi-numerik" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">x_combined</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P1_fire</th>
+      <th>P1_not fire</th>
+      <th>P2_fire</th>
+      <th>P2_not fire</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="modelling-gaussian-naives-bayes-sebagai-meta-classifier">
+<h3>MODELLING GAUSSIAN NAIVES BAYES SEBAGAI META CLASSIFIER<a class="headerlink" href="#modelling-gaussian-naives-bayes-sebagai-meta-classifier" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>183    not fire   
+179        fire   
+124    not fire   
+112        fire   
+233    not fire   
+          ...     
+156        fire   
+223    not fire   
+15     not fire   
+218    not fire   
+99     not fire   
+Name: Classes, Length: 170, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="n">clf_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">clf_nb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9235294117647059
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediksi">
+<h3>PREDIKSI<a class="headerlink" href="#prediksi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def stackingClassifier(data):</span>
+<span class="c1">#   result_n_7 = pd.DataFrame(clf_n_7.predict(data), columns=[&#39;P1&#39;])</span>
+<span class="c1">#   result_n_12 = pd.DataFrame(clf_n_12.predict(data), columns=[&#39;P2&#39;])</span>
+<span class="c1">#   data = pd.concat([result_n_7, result_n_12], axis=1)</span>
+<span class="c1">#   x_predict = pd.get_dummies(data,prefix=[&quot;P1&quot;,&quot;P2&quot;],columns=[&quot;P1&quot;,&quot;P2&quot;], dtype=&#39;int&#39;)</span>
+<span class="c1">#   if &#39;P1_fire&#39; not in x_predict.columns and &#39;P2_fire&#39; not in x_predict.columns:</span>
+<span class="c1">#     x_predict.insert(0, &quot;P1_fire&quot;, [0], True)</span>
+<span class="c1">#     x_predict.insert(2, &quot;P2_fire&quot;, [0], True)</span>
+<span class="c1">#   elif &#39;P1_not fire&#39; not in x_predict.columns and &#39;P2_not fire&#39; not in x_predict.columns:</span>
+<span class="c1">#     x_predict.insert(1, &quot;P1_not fire&quot;, [0], True)</span>
+<span class="c1">#     x_predict.insert(3, &quot;P2_not fire&quot;, [0], True)</span>
+<span class="c1">#   return clf_nb.predict(x_predict), clf_nb.score(X, y_train)</span>
+
+<span class="k">def</span> <span class="nf">stackingClassifier</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+  <span class="n">result_n_7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clf_n_7</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P1&#39;</span><span class="p">])</span>
+  <span class="n">result_n_12</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clf_n_12</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P2&#39;</span><span class="p">])</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">result_n_7</span><span class="p">,</span> <span class="n">result_n_12</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">x_predict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="s1">&#39;P1_not fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P2_not fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;P1_not fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;P2_not fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="s1">&#39;P1_fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P2_fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P1_fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;P2_fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">clf_nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_predict</span><span class="p">),</span> <span class="n">clf_nb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">prediction</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="n">stackingClassifier</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;prediction : </span><span class="si">{</span><span class="n">prediction</span><span class="si">}</span><span class="s1">, accuration : </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prediction : [&#39;not fire   &#39;], accuration : 0.9235294117647059
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:493: FutureWarning: The feature names should match those that were passed during fit. Starting version 1.2, an error will be raised.
+Feature names unseen at fit time:
+- P1_not fire
+- P2_not fire
+Feature names seen at fit time, yet now missing:
+- P1_not fire   
+- P2_not fire   
+
+  warnings.warn(message, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bagging-classifier">
+<h1>Bagging Classifier<a class="headerlink" href="#bagging-classifier" title="Link to this heading">#</a></h1>
+<img src="_image/image-20240627-025854.png" width="50%" align="center" /><section id="membuat-sample-data">
+<h2>Membuat sample data<a class="headerlink" href="#membuat-sample-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B1</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">B1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>52</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>30</td>
+      <td>80</td>
+      <td>15</td>
+      <td>0</td>
+      <td>831</td>
+      <td>79</td>
+      <td>34.500000</td>
+      <td>35</td>
+      <td>10</td>
+      <td>3.700000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>29</td>
+      <td>65</td>
+      <td>19</td>
+      <td>6</td>
+      <td>683</td>
+      <td>55</td>
+      <td>15.200000</td>
+      <td>15</td>
+      <td>58</td>
+      <td>0.700000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>31</td>
+      <td>66</td>
+      <td>11</td>
+      <td>0</td>
+      <td>857</td>
+      <td>83</td>
+      <td>24.900000</td>
+      <td>4</td>
+      <td>9</td>
+      <td>4.100000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>35</td>
+      <td>64</td>
+      <td>17</td>
+      <td>0</td>
+      <td>872</td>
+      <td>319</td>
+      <td>145.700000</td>
+      <td>68</td>
+      <td>412</td>
+      <td>15.700000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>32</td>
+      <td>76</td>
+      <td>20</td>
+      <td>7</td>
+      <td>631</td>
+      <td>26</td>
+      <td>9.200000</td>
+      <td>13</td>
+      <td>3</td>
+      <td>0.500000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>35</td>
+      <td>62</td>
+      <td>19</td>
+      <td>0</td>
+      <td>894</td>
+      <td>232</td>
+      <td>120.900000</td>
+      <td>97</td>
+      <td>313</td>
+      <td>17.200000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>34</td>
+      <td>63</td>
+      <td>13</td>
+      <td>29</td>
+      <td>697</td>
+      <td>72</td>
+      <td>9.800000</td>
+      <td>12</td>
+      <td>69</td>
+      <td>0.600000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>33</td>
+      <td>68</td>
+      <td>19</td>
+      <td>0</td>
+      <td>856</td>
+      <td>125</td>
+      <td>49.800000</td>
+      <td>6</td>
+      <td>154</td>
+      <td>8.000000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>36</td>
+      <td>45</td>
+      <td>14</td>
+      <td>0</td>
+      <td>788</td>
+      <td>48</td>
+      <td>10.200000</td>
+      <td>2</td>
+      <td>47</td>
+      <td>0.900000</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B2</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">B2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>51</th>
+      <td>28</td>
+      <td>79</td>
+      <td>18</td>
+      <td>1</td>
+      <td>734</td>
+      <td>164</td>
+      <td>79.900000</td>
+      <td>18</td>
+      <td>217</td>
+      <td>2.800000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>38</td>
+      <td>52</td>
+      <td>14</td>
+      <td>0</td>
+      <td>783</td>
+      <td>44</td>
+      <td>10.500000</td>
+      <td>2</td>
+      <td>44</td>
+      <td>0.800000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>37</td>
+      <td>40</td>
+      <td>13</td>
+      <td>0</td>
+      <td>919</td>
+      <td>223</td>
+      <td>55.500000</td>
+      <td>108</td>
+      <td>223</td>
+      <td>15.700000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>24</td>
+      <td>54</td>
+      <td>18</td>
+      <td>1</td>
+      <td>797</td>
+      <td>43</td>
+      <td>15.200000</td>
+      <td>17</td>
+      <td>51</td>
+      <td>0.700000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>28</td>
+      <td>79</td>
+      <td>12</td>
+      <td>0</td>
+      <td>732</td>
+      <td>95</td>
+      <td>46.300000</td>
+      <td>13</td>
+      <td>126</td>
+      <td>0.900000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>29</td>
+      <td>57</td>
+      <td>14</td>
+      <td>0</td>
+      <td>893</td>
+      <td>125</td>
+      <td>41.300000</td>
+      <td>78</td>
+      <td>142</td>
+      <td>9.700000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>37</td>
+      <td>36</td>
+      <td>13</td>
+      <td>6</td>
+      <td>862</td>
+      <td>179</td>
+      <td>36.700000</td>
+      <td>48</td>
+      <td>178</td>
+      <td>7.200000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>34</td>
+      <td>70</td>
+      <td>16</td>
+      <td>0</td>
+      <td>86</td>
+      <td>128</td>
+      <td>25.600000</td>
+      <td>54</td>
+      <td>127</td>
+      <td>6.700000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>34</td>
+      <td>81</td>
+      <td>15</td>
+      <td>0</td>
+      <td>818</td>
+      <td>97</td>
+      <td>37.200000</td>
+      <td>3</td>
+      <td>117</td>
+      <td>3.400000</td>
+      <td>not fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B3</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">B3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>RH</th>
+      <th>Ws</th>
+      <th>Rain</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>BUI</th>
+      <th>FWI</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>37</th>
+      <td>33</td>
+      <td>68</td>
+      <td>19</td>
+      <td>0</td>
+      <td>856</td>
+      <td>125</td>
+      <td>49.800000</td>
+      <td>6</td>
+      <td>154</td>
+      <td>8.000000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>30</td>
+      <td>65</td>
+      <td>14</td>
+      <td>0</td>
+      <td>854</td>
+      <td>16</td>
+      <td>44.500000</td>
+      <td>45</td>
+      <td>169</td>
+      <td>6.500000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>30</td>
+      <td>73</td>
+      <td>15</td>
+      <td>0</td>
+      <td>866</td>
+      <td>121</td>
+      <td>38.300000</td>
+      <td>56</td>
+      <td>135</td>
+      <td>7.100000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>32</td>
+      <td>61</td>
+      <td>15</td>
+      <td>6</td>
+      <td>700</td>
+      <td>134</td>
+      <td>49.288115</td>
+      <td>42</td>
+      <td>151</td>
+      <td>7.019262</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>32</td>
+      <td>54</td>
+      <td>11</td>
+      <td>5</td>
+      <td>737</td>
+      <td>79</td>
+      <td>30.400000</td>
+      <td>12</td>
+      <td>96</td>
+      <td>0.700000</td>
+      <td>not fire</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>32</td>
+      <td>66</td>
+      <td>17</td>
+      <td>0</td>
+      <td>859</td>
+      <td>112</td>
+      <td>55.800000</td>
+      <td>56</td>
+      <td>149</td>
+      <td>7.500000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>36</td>
+      <td>61</td>
+      <td>18</td>
+      <td>3</td>
+      <td>802</td>
+      <td>117</td>
+      <td>90.400000</td>
+      <td>28</td>
+      <td>176</td>
+      <td>4.200000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>31</td>
+      <td>64</td>
+      <td>18</td>
+      <td>0</td>
+      <td>868</td>
+      <td>178</td>
+      <td>71.800000</td>
+      <td>67</td>
+      <td>216</td>
+      <td>10.600000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>36</td>
+      <td>55</td>
+      <td>15</td>
+      <td>0</td>
+      <td>891</td>
+      <td>209</td>
+      <td>43.300000</td>
+      <td>8</td>
+      <td>208</td>
+      <td>12.000000</td>
+      <td>fire</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>35</td>
+      <td>55</td>
+      <td>14</td>
+      <td>0</td>
+      <td>889</td>
+      <td>186</td>
+      <td>67.000000</td>
+      <td>74</td>
+      <td>219</td>
+      <td>11.600000</td>
+      <td>fire</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 11 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="modelling-dengan-naive-bayes">
+<h2>Modelling dengan Naive Bayes<a class="headerlink" href="#modelling-dengan-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Jadikan tiga model Naives Bayes sebagai estimator untuk digunakan dalam BaggingClassifiers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B1_x</span> <span class="o">=</span> <span class="n">B1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">B1_y</span> <span class="o">=</span> <span class="n">B1</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+<span class="n">M1</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">M1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B1_x</span><span class="p">,</span> <span class="n">B1_y</span><span class="p">)</span>
+
+<span class="c1"># saving model with joblib</span>
+<span class="c1">#joblib.dump(M1, &#39;bagging/m1.joblib&#39;)</span>
+
+<span class="n">M1_predict</span> <span class="o">=</span> <span class="n">M1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">M1_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M1_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P1&#39;</span><span class="p">])</span>
+
+<span class="c1"># M1.score(x_test, y_test)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B2_x</span> <span class="o">=</span> <span class="n">B2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">B2_y</span> <span class="o">=</span> <span class="n">B2</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+<span class="n">M2</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">M2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B2_x</span><span class="p">,</span> <span class="n">B2_y</span><span class="p">)</span>
+
+<span class="c1">#joblib.dump(M2, &#39;bagging/m2.joblib&#39;)</span>
+
+<span class="n">M2_predict</span> <span class="o">=</span> <span class="n">M2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">M2_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M2_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P2&#39;</span><span class="p">])</span>
+
+<span class="c1"># M2.score(x_test, y_test)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B3_x</span> <span class="o">=</span> <span class="n">B3</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">B3_y</span> <span class="o">=</span> <span class="n">B3</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+<span class="n">M3</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">M3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B3_x</span><span class="p">,</span> <span class="n">B3_y</span><span class="p">)</span>
+
+<span class="c1"># saving model with joblib</span>
+<span class="c1">#joblib.dump(M3, &#39;bagging/m3.joblib&#39;)</span>
+
+<span class="n">M3_predict</span> <span class="o">=</span> <span class="n">M3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">M3_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M3_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P3&#39;</span><span class="p">])</span>
+
+<span class="c1"># M3.score(x_test, y_test)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="change-categorical-to-numeric">
+<h2>Change categorical to numeric<a class="headerlink" href="#change-categorical-to-numeric" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X = pd.concat([M1_result, M2_result, M3_result], axis=1)</span>
+<span class="c1"># X</span>
+<span class="n">x_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">M1_result</span><span class="p">,</span> <span class="n">M2_result</span><span class="p">,</span> <span class="n">M3_result</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># x_combined</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">x_combined</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>P1_fire</th>
+      <th>P1_not fire</th>
+      <th>P2_fire</th>
+      <th>P2_not fire</th>
+      <th>P3_fire</th>
+      <th>P3_not fire</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>170 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="make-aggregation">
+<h2>Make aggregation<a class="headerlink" href="#make-aggregation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf_knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">clf_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># saving model with joblib</span>
+<span class="c1">#joblib.dump(clf_knn, &#39;bagging/aggregation.joblib&#39;)</span>
+
+<span class="c1"># result = clf_nb.predict(x_train)</span>
+<span class="c1"># result</span>
+
+<span class="n">clf_knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.888235294117647
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-prediction-function">
+<h2>Make prediction function<a class="headerlink" href="#make-prediction-function" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">baggingClassifier</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">B1</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">B2</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">B3</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">B1_x</span> <span class="o">=</span> <span class="n">B1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">B1_y</span> <span class="o">=</span> <span class="n">B1</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+    <span class="n">M1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B1_x</span><span class="p">,</span> <span class="n">B1_y</span><span class="p">)</span>
+    <span class="n">M1_predict</span> <span class="o">=</span> <span class="n">M1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">M1_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M1_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P1&#39;</span><span class="p">])</span>
+
+    <span class="n">B2_x</span> <span class="o">=</span> <span class="n">B2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">B2_y</span> <span class="o">=</span> <span class="n">B2</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+    <span class="n">M2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B2_x</span><span class="p">,</span> <span class="n">B2_y</span><span class="p">)</span>
+    <span class="n">M2_predict</span> <span class="o">=</span> <span class="n">M2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">M2_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M2_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P2&#39;</span><span class="p">])</span>
+
+    <span class="n">B3_x</span> <span class="o">=</span> <span class="n">B3</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Classes&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">B3_y</span> <span class="o">=</span> <span class="n">B3</span><span class="p">[</span><span class="s1">&#39;Classes&#39;</span><span class="p">]</span>
+
+    <span class="n">M3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">B3_x</span><span class="p">,</span> <span class="n">B3_y</span><span class="p">)</span>
+    <span class="n">M3_predict</span> <span class="o">=</span> <span class="n">M3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">M3_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">M3_predict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;P3&#39;</span><span class="p">])</span>
+
+    <span class="n">x_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">M1_result</span><span class="p">,</span> <span class="n">M2_result</span><span class="p">,</span> <span class="n">M3_result</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x_predict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">x_combined</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span><span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;P1_not fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P2_not fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P3_not fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;P1_not fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;P2_not fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;P3_not fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s1">&#39;P1_fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P2_fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;P3_fire&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x_predict</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P1_fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;P2_fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">x_predict</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;P3_fire&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">clf_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clf_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_predict</span><span class="p">),</span> <span class="n">clf_knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">prediction</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="n">baggingClassifier</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;prediction : </span><span class="si">{</span><span class="n">prediction</span><span class="si">}</span><span class="s1">, accuration : </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prediction : [&#39;not fire   &#39;], accuration : 0.888235294117647
+/shared-libs/python3.9/py/lib/python3.9/site-packages/sklearn/base.py:493: FutureWarning: The feature names should match those that were passed during fit. Starting version 1.2, an error will be raised.
+Feature names unseen at fit time:
+- P1_fire
+- P2_fire
+- P3_fire
+Feature names seen at fit time, yet now missing:
+- P1_not fire   
+- P2_not fire   
+- P3_not fire   
+
+  warnings.warn(message, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
+<h1>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<p>Dari beberapa tahapan pengerjaan yang telah kita lalui, kami mendapatkan kesimpulan bahwa hasil yang terbaik untuk di bawa ke tahapan selanjutnya adalah dengan menggunakan model dari stacking.</p>
+<p>Dapat dilihat kembali hasil akurasi stacking lebih tinggi daripada akurasi bagging, yaitu akurasi stacking 0.9235294117647059 sedangkan akurasi bagging 0.888235294117647</p>
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=7ef3b710-b879-4d43-8380-181ddcce80f4' target="_blank">
+<img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
+Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markdown Files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">CLASSIFICATION FOR PREDICTION  ON ALGERIAN FOREST FIRES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">DATA UNDERSTANDING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengumpulkan-data">MENGUMPULKAN DATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-data">Mencari Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data">Menarik Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memahami-data">Memahami Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">Deskripsi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur">Penjelasan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">KUALITAS DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value">Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">DATA PREPROCESSING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-outlier-factor">Local Outlier Factor</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modelling">DATA MODELLING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">Gaussian Naive bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#esemble-learning">ESEMBLE LEARNING</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-classifier">Stacking Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-knn-dengan-n-7">Membuat model knn dengan n = 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-knn-dengan-n-12">Membuat model knn dengan n = 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merubah-data-menjadi-numerik">Merubah data menjadi numerik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-gaussian-naives-bayes-sebagai-meta-classifier">MODELLING GAUSSIAN NAIVES BAYES SEBAGAI META CLASSIFIER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi">PREDIKSI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sample-data">Membuat sample data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-naive-bayes">Modelling dengan Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-categorical-to-numeric">Change categorical to numeric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-aggregation">Make aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-prediction-function">Make prediction function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
